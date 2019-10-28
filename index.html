@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML5 Canvas</title>
+	<script src="jscolor.js"></script>
+	<meta charset="utf-8">
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+	<header>
+		<h3>Draw & Download</h3>
+		<a id="download" download="myImage.jpg" href="" onclick="download_img(this);">Download as .jpg</a>
+		<i title="Reset"id="icon" class="fas fa-redo-alt" onclick="window.location.reload()"></i>
+		<input title="Select color"id="boja"class="jscolor" value="000000" disabled onchange="color()">
+		<select onchange="ch_size(this)"title="Select size">
+			<option disabled>Size</option>
+			<option>5</option>
+			<option>10</option>
+			<option>15</option>
+			<option>20</option>
+			<option>25</option>
+			<option>30</option>
+		</select>
+	</header>
+	<canvas id="a" width="800" height="500"></canvas>
+
+
+	<script type="text/javascript">
+		var size = 5;
+		var md = false;
+		var boja = document.getElementById('boja').value;
+		var canvas = document.getElementById('a');
+		canvas.addEventListener('mousedown',down);
+		canvas.addEventListener('mouseup',toggledraw);
+		canvas.addEventListener('mousemove',
+			function(evt){
+				var mousePos = getMousePos(canvas, evt);
+				var posx = mousePos.x;
+				var posy = mousePos.y;
+				draw(canvas,posx,posy);
+			}
+		);
+		function down(){
+			md = true;
+		}
+		function toggledraw(){
+			md = false;
+			canvas.style.cursor = "default";
+		}
+		function getMousePos(canvas, evt){
+			var rect = canvas.getBoundingClientRect();
+			return{
+				x:evt.clientX - rect.left,
+				y:evt.clientY - rect.top
+			}
+		}
+		function draw(canvas, posx, posy){
+			var context = canvas.getContext('2d');
+			if(md){
+				canvas.style.cursor = "pointer";
+				context.fillStyle = boja;
+				context.fillRect(posx,posy, size, size);
+			}
+		}
+		download_img = function(el) {
+			 var imageURI = canvas.toDataURL("image/jpg");
+			 el.href = imageURI;
+		};
+		function color(){
+			boja = "#"+document.getElementById('boja').value;		
+		}
+		function ch_size(f){
+			size = f.value;
+		}
+	</script>
+</body>
+</html>

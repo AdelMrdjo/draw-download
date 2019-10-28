@@ -1,0 +1,72 @@
+body{
+	margin:0;
+	padding:0;
+	font-family: monospace;
+}
+canvas{
+	position: relative;
+	left:50%;
+	top:30px;
+	transform: translate(-50%);
+	border:1px solid black;
+	background:#fff;
+}
+header{
+	width: 100%;
+	height: 50px;
+	margin-bottom:10px;
+	box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.5);
+}
+header input{
+	width: 50px;
+	height: 20px;
+	float:right;
+	margin-top:13px;
+	margin-right: 10px;
+	border:none;
+}
+header select{
+	width: 35px;
+	height: 20px;
+	margin-top:13px;
+	float:right;
+	border:none;
+	margin-right: 2px;
+}
+h3{
+	padding:0;
+	position: absolute;
+	margin-top:10px;
+	margin-left:10px;
+	font: 900 25px monospace;
+	text-align: center;
+	background: linear-gradient(to right,#f00,#00ff00);
+	background-clip: text;
+	-webkit-background-clip:text;
+	color:transparent;
+}
+a{
+	text-decoration: none;
+	background:#00ff00;
+	padding:5px;
+	float:right;
+	margin-top:10px;
+	margin-right: 10px;
+	color:#262626;
+	transition: all linear .5s;
+}
+a:hover{
+	box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.5);
+}
+#icon{
+	color:#f00;
+	float:right;
+	margin-top:10px;
+	margin-right: 10px;
+	font-size: 22px;
+	cursor: pointer;
+	transition: all linear .5s;
+}
+#icon:hover{
+	transform: rotateZ(360deg);
+}
